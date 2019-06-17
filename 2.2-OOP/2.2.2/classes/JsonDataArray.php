@@ -22,7 +22,9 @@ class JsonDataArray
 
     public function __construct($dataModelName = null)
     {
-        $dataModelName =  $dataModelName ?? strtolower(static::class);
+        if (is_null($dataModelName)){
+            $dataModelName =  strtolower(static::class);
+        }
         $this->file = new JsonFileAccessModel($dataModelName);
         $this->load();
     }
@@ -269,7 +271,8 @@ class JsonDataArray
         return $this;
     }
 
-    public function limit($limit)
+    public
+    function limit($limit)
     {
         $this->query = array_slice($this->query, 0, $limit);
         return $this;

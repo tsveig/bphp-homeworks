@@ -5,7 +5,7 @@ class DataRecordModel
     private $filename;
     private $guid;
 
-    public function __construct(string $guid = null)
+    public function __construct()
     {
         $this->filename = strtolower(static::class) . 's';
         $this->guid = $guid;
