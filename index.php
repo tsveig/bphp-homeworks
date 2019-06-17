@@ -36,12 +36,19 @@
             <li> Введение в ООП 2.2.
                 <ul>
                     <li><a href="2.2-OOP/2.2.1">Задание 1</a></li>
-                    <li><a href="2.1-OOP/2.2.2">Задание 2</a></li>
+                    <li><a href="2.2-OOP/2.2.2">Задание 2</a></li>
                 </ul>
             </li>
-            <li> Введение в ООП 3.1.
+            <li> Даты. Сессии 2.3.
                 <ul>
-                    <li><a href="3.1-exceptions-and-headers">Задание 1</a></li>
+                    <li><a href="2.3-dates-and-sessions/2.3.1-your-tube">Задание 1</a></li>
+                    <li><a href="2.3-dates-and-sessions/2.3.2-brute-protection">Задание 2</a></li>
+                </ul>
+            </li>
+
+            <li> Работа с исключениями. Заголовки 3/1
+                <ul>
+                    <li><a href="3.1-exceptions-and-headers/3.1.1-router">Задание 1</a></li>
                 </ul>
             </li>
 
