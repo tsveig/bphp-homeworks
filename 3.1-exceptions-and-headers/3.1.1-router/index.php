@@ -14,27 +14,24 @@ class PageNotFound extends Exception
 class Router
 {
     public $page;
-    public function __construct($name)
+    public $links;
+    public function __construct($name, $availableLinks)
     {
         $this->page = $name;
+        $this->links = $availableLinks;
     }
     public function checkPageName()
     {
         if (!array_key_exists('page', $_GET)) {
             throw new WrongHeader('Get request error');
         }
-        if (!array_key_exists($_GET['page'], [
-            'article',
-            'news',
-            'about',
-            'main'
-        ])) {
+        if (!array_key_exists($_GET['page'], $links)) {
             throw new PageNotFound('Page is not exist');
         }
         return true;
     }
 }
-$page = new Router('main');
+$page = new Router('main', $availableLinks);
 try {
     $page->checkPageName();
     echo "Вы находитесь на странице {$_GET['page']}";
