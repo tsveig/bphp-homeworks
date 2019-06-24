@@ -1,54 +1,3 @@
-<?php
-/**
- * Функция получает текущее количество просмотров на видео
- *
- * @return int
- */
-function getViews(): int
-{
-    $views = include 'views.php';
-    return (int)$views;
-}
-/**
- * Функция увеличивает количество просмотров на 1
- *
- * @param int $views
- */
-function incrementViews(int $views)
-{
-    $views++;
-    $data = "<?php \r\nreturn {$views};";
-    file_put_contents('views.php', $data);
-}
-/**
- * Функция проверяет, нужно ли увеличивать число просмотров
- *
- * @return bool
- */
-function shouldBeIncremented(): bool
-{
-    $views = getViews();
-	if (!isset($_COOKIE['time'])) {
-        addTimeToCookie();
-        incrementViews($views);
-	}
-	$startTime = time();
-	$timestamp = $_COOKIE['time'];
-    if ($startTime - $timestamp >= 300) {
-        incrementViews($views);
-        addTimeToCookie();
-        return true;
-    } else {
-    	return false;
-	}
-}
-function addTimeToCookie() {
-    setcookie('time', time());
-}
-shouldBeIncremented();
-//
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,3 +65,54 @@ shouldBeIncremented();
 
 </body>
 </html>
+
+<?php
+/**
+ * Функция получает текущее количество просмотров на видео
+ *
+ * @return int
+ */
+function getViews(): int
+{
+    $views = include 'views.php';
+    return (int)$views;
+}
+/**
+ * Функция увеличивает количество просмотров на 1
+ *
+ * @param int $views
+ */
+function incrementViews(int $views)
+{
+    $views++;
+    $data = "<?php \r\nreturn {$views};";
+    file_put_contents('views.php', $data);
+}
+/**
+ * Функция проверяет, нужно ли увеличивать число просмотров
+ *
+ * @return bool
+ */
+function shouldBeIncremented(): bool
+{
+    $views = getViews();
+	if (!isset($_COOKIE['time'])) {
+        addTimeToCookie();
+        incrementViews($views);
+	}
+	$startTime = time();
+	$timestamp = $_COOKIE['time'];
+    if ($startTime - $timestamp >= 300) {
+        incrementViews($views);
+        addTimeToCookie();
+        return true;
+    } else {
+    	return false;
+	}
+}
+function addTimeToCookie() {
+    setcookie('time', time());
+}
+shouldBeIncremented();
+//
+?>
