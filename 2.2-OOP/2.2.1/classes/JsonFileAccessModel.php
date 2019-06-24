@@ -22,10 +22,9 @@
         }
 
         public function read() {
-            ($_SERVER['DOCUMENT_ROOT']);
             $this->connect();
-            if (fread($this->file,3000) !== FALSE) {
-                $text = fread($this->file,3000);
+            $text = fread($this->file,3000);
+            if ($text !== FALSE) {
                 $this->disconnect();
                 return $text;
             }else {
@@ -41,8 +40,7 @@
         }
 
         public function readJson() {
-            $this->connect();
-            return json_encode($this::read());
+            return json_encode($this->read());
         }
 
         public function writeJson($jsonObject){
