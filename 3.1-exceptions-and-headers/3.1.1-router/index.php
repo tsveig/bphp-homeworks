@@ -15,9 +15,9 @@ class Router
 {
     public $page;
     public $links;
-    public function __construct($name, $availableLinks)
+    public function __construct($_GET, $availableLinks)
     {
-        $this->page = $name;
+        $this->page = $_GET['page'];
         $this->links = $availableLinks;
     }
     public function checkPageName()
@@ -25,13 +25,13 @@ class Router
         if (!array_key_exists('page', $_GET)) {
             throw new WrongHeader('Get request error');
         }
-        if (!array_key_exists($_GET['page'], $links)) {
+        if (!array_key_exists($_GET['page'], $this->links)) {
             throw new PageNotFound('Page is not exist');
         }
         return true;
     }
 }
-$page = new Router('main', $availableLinks);
+$page = new Router($_GET, $availableLinks);
 try {
     $page->checkPageName();
     echo "Вы находитесь на странице {$_GET['page']}";

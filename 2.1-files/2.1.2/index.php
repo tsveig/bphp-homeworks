@@ -10,7 +10,6 @@ $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://'
 $directory = preg_replace('/\/[a-z0-9-_\.]+\.php$/i', '/', $_SERVER['REQUEST_URI']);
 define('TASK_DOMAIN', $protocol . $_SERVER['SERVER_NAME'] . $directory);
 define('TASK_PATH', __DIR__ . '/');
-)
 
 if ($_FILES['userfile']['error'] === 0 && 
    ($_FILES['userfile']['type'] === 'image/jpeg' || 
@@ -18,9 +17,9 @@ if ($_FILES['userfile']['error'] === 0 &&
    $_FILES['userfile']['type'] === 'image/gif')) {
     $file = $_FILES['userfile']['tmp_name'];
     $name = $_FILES['userfile']['name'];
-    move_uploaded_file($file, 'TASK_PATH' . '\\' . $name);
+    move_uploaded_file($file, TASK_PATH . '\\' . $name);
 }
-$files = scandir('TASK_PATH');
+$files = scandir(TASK_PATH);
 foreach ($files as $file) {
     if ($file === '.' || $file === '..') {
         continue;
