@@ -95,24 +95,18 @@ function incrementViews(int $views)
  */
 function shouldBeIncremented(): bool
 {
-    $views = getViews();
-	if (!isset($_COOKIE['time'])) {
-        addTimeToCookie();
-        incrementViews($views);
-	}
-	$startTime = time();
-	$timestamp = $_COOKIE['time'];
+    $startTime = time();
+	$timestamp = isset($_COOKIE['time']) ? $_COOKIE['time'] : 0;
     if ($startTime - $timestamp >= 300) {
-        incrementViews($views);
-        addTimeToCookie();
+        setcookie('time', time());
         return true;
-    } else {
-    	return false;
-	}
+    }
+    return false;
 }
-function addTimeToCookie() {
-    setcookie('time', time());
+
+if (shouldBeIncremented()){
+    incrementViews(getViews());
 }
-shouldBeIncremented();
+
 //
 ?>

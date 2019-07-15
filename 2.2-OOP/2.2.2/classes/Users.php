@@ -9,7 +9,9 @@ class Users extends JsonDataArray
     
     public function displaySortedList()
     {
-        foreach(this->$dataArray as $user)
+        parent::load();
+        $query = parent::getGuids();
+        foreach($this->query as $user)
             {
               echo $user, “<br>”;
             }

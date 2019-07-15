@@ -11,8 +11,7 @@
             if ($this->file == NULL) {
                 if (fopen($this->fileName,'r+') == FALSE) {
                     echo 'Ошибка во время открытия файла';
-                }else {                    
-                    $this->file = fopen($this->fileName,'r+');
+                
                 } 
             } 
         }
