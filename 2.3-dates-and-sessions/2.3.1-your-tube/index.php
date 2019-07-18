@@ -96,9 +96,9 @@ function incrementViews(int $views)
 function shouldBeIncremented(): bool
 {
     $startTime = time();
-	$timestamp = isset($_COOKIE['time']) ? $_COOKIE['time'] : 0;
+    $timestamp = isset($_COOKIE['time']) ? $_COOKIE['time'] : 0;
+    setcookie('time', $startTime);
     if ($startTime - $timestamp >= 300) {
-        setcookie('time', time());
         return true;
     }
     return false;
