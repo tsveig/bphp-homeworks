@@ -98,10 +98,7 @@ function shouldBeIncremented(): bool
     $startTime = time();
     $timestamp = isset($_COOKIE['time']) ? $_COOKIE['time'] : 0;
     setcookie('time', $startTime);
-    if ($startTime - $timestamp >= 300) {
-        return true;
-    }
-    return false;
+    return (($startTime - $timestamp) >= 300000); 
 }
 
 if (shouldBeIncremented()){
