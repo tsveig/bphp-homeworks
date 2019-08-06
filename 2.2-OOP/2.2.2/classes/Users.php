@@ -11,9 +11,9 @@ class Users extends JsonDataArray
     {
         parent::load();
         $UserQuery = parent::getGuids();
-        foreach($this->UserQuery as $user)
+        foreach($UserQuery as $user)
             {
-              echo $user, “<br>”;
+              echo $user, "<br>";
             }
     }
 
